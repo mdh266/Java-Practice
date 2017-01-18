@@ -1,30 +1,34 @@
 import java.util.*;
 
-public class Stack
+public class Queue
 {
 	private Node head;
 
-	public Stack()
+	public Queue()
 	{
 		head = null;
 	}
 
 	public void push(int x)
 	{
-		// add to the beginning of the list
+		// add it to the end of the list
 		if(head == null)
 			head = new Node(x);
 		else
 		{
-			Node temp = new Node(x);
-			temp.setNext(head);
-			head = temp;
+			Node curr = head;
+			while(curr.getNext() != null)
+				curr = curr.getNext();
+
+			Node last = new Node(x);
+			curr.setNext(last);
+
 		}	
 	}
 	
 	public int pop()
 	{
-		// remove from the beginning of the list
+		// pop from the front of the list
 		if(head == null)
 			throw new EmptyStackException();
 		else
@@ -64,13 +68,13 @@ public class Stack
 
 	public static void main(String[] args)
 	{
-		Stack stack = new Stack();
-		stack.push(1);
-		stack.push(2);
-		stack.push(3);
-		System.out.println("Size of stack is " + stack.size());
-		while(!stack.isEmpty())
-			System.out.println(stack.pop());
-		System.out.println("Size of stack is " + stack.size());
+		Queue queue = new Queue();
+		queue.push(1);
+		queue.push(2);
+		queue.push(3);
+		System.out.println("Size of stack is " + queue.size());
+		while(!queue.isEmpty())
+			System.out.println(queue.pop());
+		System.out.println("Size of stack is " + queue.size());
 	}
 }
