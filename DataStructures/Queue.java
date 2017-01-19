@@ -1,44 +1,54 @@
 import java.util.*;
 
-public class Queue
+/** Queue for generic type T.*/
+public class Queue<T>
 {
-	private Node head;
+	/** Front of the queue.*/
+	private Node<T> head;
 
+	/** Constructor sets head equal to null.*/
 	public Queue()
 	{
 		head = null;
 	}
 
-	public void push(int x)
+	/** Pushes a new value to the queue.*/
+	public void push(T x)
 	{
-		// add it to the end of the list
+		// If the head is null, set the head equal
+		// to the new node.
 		if(head == null)
-			head = new Node(x);
+			head = new Node<T>(x);
 		else
 		{
-			Node curr = head;
+			// Loop through the list and add the new node
+			// on to the back of the list.
+			Node<T> curr = head;
 			while(curr.getNext() != null)
 				curr = curr.getNext();
 
-			Node last = new Node(x);
+			Node<T> last = new Node<T>(x);
 			curr.setNext(last);
-
 		}	
 	}
 	
-	public int pop()
+	/** Removes the node from the queue.*/
+	public T pop()
 	{
 		// pop from the front of the list
 		if(head == null)
 			throw new EmptyStackException();
 		else
 		{
-			int val = head.getVal();
+			// Reset the head to be the next node 
+			// in the list.
+			T val = head.getVal();
 			head = head.getNext();
 			return val;
 		}
 	}
-
+	
+	/** Returns a boolean as to whether the queue is empty.*/
 	public boolean isEmpty()
 	{
 		if(head == null)
@@ -47,6 +57,7 @@ public class Queue
 			return false;
 	}
 
+	/** Returns the size of the queue.*/
 	public int size()
 	{
 		int count = 0;
@@ -54,8 +65,8 @@ public class Queue
 			return count;
 		else
 		{
-			Node curr = head;
-			
+			// Loop through and count the number of nodes.
+			Node<T> curr = head;	
 			while(curr != null)
 			{
 				count++;
@@ -66,9 +77,10 @@ public class Queue
 	}
 		
 
+	/** Main method.*/
 	public static void main(String[] args)
 	{
-		Queue queue = new Queue();
+		Queue<Integer> queue = new Queue<Integer>();
 		queue.push(1);
 		queue.push(2);
 		queue.push(3);

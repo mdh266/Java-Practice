@@ -1,40 +1,48 @@
 import java.util.*;
 
-public class Stack
+/** Generic stack object.*/
+public class Stack<T>
 {
-	private Node head;
+	// Top of the stack.
+	private Node<T> head;
 
+	/** Constructor for the stack, sets head equal to null.*/
 	public Stack()
 	{
 		head = null;
 	}
 
-	public void push(int x)
+	/** Pushes new element to the stack.*/
+	public void push(T x)
 	{
 		// add to the beginning of the list
 		if(head == null)
-			head = new Node(x);
+			head = new Node<T>(x);
 		else
 		{
-			Node temp = new Node(x);
+			// reset the head if the stack isnt empty.
+			Node<T> temp = new Node<T>(x);
 			temp.setNext(head);
 			head = temp;
 		}	
 	}
 	
-	public int pop()
+	/** Remvoes the element from the top of the stack and returns its value.*/
+	public T pop()
 	{
 		// remove from the beginning of the list
 		if(head == null)
 			throw new EmptyStackException();
 		else
 		{
-			int val = head.getVal();
+			// resets the head to be the next node.
+			T val = head.getVal();
 			head = head.getNext();
 			return val;
 		}
 	}
 
+	/** Returns boolean if the stack is empty.*/
 	public boolean isEmpty()
 	{
 		if(head == null)
@@ -43,8 +51,10 @@ public class Stack
 			return false;
 	}
 
+	/** Returns the size of the stack.*/
 	public int size()
 	{
+		// Loop through the elements and count the number of nodes.
 		int count = 0;
 		if(this.isEmpty())
 			return count;
@@ -61,10 +71,10 @@ public class Stack
 		}
 	}
 		
-
+	/** Main method.*/
 	public static void main(String[] args)
 	{
-		Stack stack = new Stack();
+		Stack<Integer> stack = new Stack<Integer>();
 		stack.push(1);
 		stack.push(2);
 		stack.push(3);
