@@ -1,40 +1,48 @@
-/* 
- TreeNode class for binary search trees
-*/
-
-public class TreeNode
+/** TreeNode class for binary search tree*/
+public class TreeNode<T>
 {
-	private int val;
-	private TreeNode left;
-	private TreeNode right;
+	// value stored in this node.
+	private T val;
+	
+	// left child
+	private TreeNode<T> left;
 
-	public TreeNode(int val)
+	// right child.
+	private TreeNode<T> right;
+
+	// Constructor sets value of node to val, and child to null.
+	public TreeNode(T val)
 	{
 		this.val = val;	
 		this.left = null;
 		this.right = null;
 	}
 	
-	public void setLeft(TreeNode left)
+	// Sets the left child of this node.
+	public void setLeft(TreeNode<T> left)
 	{
 		this.left = left;
 	}
 	
+	// Sets the right child of this node.
 	public void setRight(TreeNode right)
 	{
 		this.right = right;
 	} 
 
-	public int getValue()
+	// Returns the value stored in this node.
+	public T getValue()
 	{
 		return val;
 	}
 
-	public void setValue(int val)
+	// Sets the value of this node.
+	public void setValue(T val)
 	{
 		this.val = val;
 	}
 
+	// Returns boolean of whether the node has a left child.
 	public boolean hasLeft()
 	{
 		if(this.left == null)
@@ -43,6 +51,7 @@ public class TreeNode
 			return true;
 	}
 
+	// Returns boolean of whether the node has a right child.
  	public boolean hasRight()
 	{
 		if(this.right == null)
@@ -51,15 +60,15 @@ public class TreeNode
 			return true;
 	} 
 
-	public TreeNode leftChild()
+	// Returns the left child of this node.
+	public TreeNode<T> leftChild()
 	{
 		return left;
 	}
 
-	public TreeNode rightChild()
+	// Returns the right child of this node.
+	public TreeNode<T> rightChild()
 	{
 		return right;
-	}
-	
-	
+	}	
 }
